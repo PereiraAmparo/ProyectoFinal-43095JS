@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bebas+Neue&family=Michroma&family=Orbitron:wght@600;700;900&display=swap");
+* {
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+} 
+.body{
+    
+    background-color: rgb(173, 241, 241);
+}
+.header{
+    box-shadow: 0 4px 8px 0 rgb(108, 108, 100);
+    font-family: "Michroma", sans-serif; 
+    margin-bottom: 1rem;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    width: 50vh;
+    margin: 40px 0px 40px 0px;
+    color: rgb(108, 108, 100);
+    padding: 4rem
+    font-size 900px;
+    font-weight: bold ;
+    font-family: "Michroma", sans-serif; 
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgb(108, 108, 100);
+    font-family: "Michroma", sans-serif; 
+    font-size: x-small ;
+
+}
+
+.btn{
+    box-shadow: 0 4px 8px 0 rgb(108, 108, 100);
+}
+
+.cooperativa{
+    font-family: "Michroma", sans-serif; 
+    font-size: bold;
+    color: rgb(26, 101, 121);
+    animation: neon 5s infinite;
+}
+.section{
+    font-family: "Michroma", sans-serif;  
+}
+
+.menu{
+    font-family: "Michroma", sans-serif;
+}
+#fechaHora {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer{
+    font-family: "Michroma", sans-serif; 
+    color: rgba(116, 105, 105, 0.589);
+    background-color: transparent;
+    position: relative;
+    left: 2rem;
+    bottom: 0;
+  }

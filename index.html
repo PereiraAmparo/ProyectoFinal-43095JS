@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>comision 43095 JS Amparo Pereira</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body class="body">
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-info bg-info">
+      <div class="container mx-2 px-3">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="cartera.html">Prestamos Pre-aprobados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="carrito.html">Carrito</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <main>
+      <div>
+        <div class="d-flex justify-content-between mx-2 px-2 ">
+          <h2 class="texto">Cooperativa de Ahorro y Credito</h2>
+          <div class="card col-md-3 mb-5 bg-transparent h-100 justify-content-center">
+            <div id="card" class="fw-bold text-align-center">
+             <p id="fechaHora"class="fw-bold text-align-center my-3 ml-5 "></p>
+            </div>
+            <div class="table-responsive">
+              <table class="table card-body justify-content-center flex-fill">
+                <thead>
+                  <tr>
+                    <th>Moneda Original</th>
+                    <th>Cotización Oficial USD</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaCuerpo"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <div>
+          <div class="offset-md-2">
+            <button type="menu" class="btn btn-info" id="menuSocio">Ingreso Socio</button>
+            <button type="menu" class="btn btn-info" id="menuPrestamo">Simulador Prestamo</button>
+            <button type="menu" class="btn btn-info" id="menuMostrar">Mostrar Prestamos</button>
+            <a href="cartera.html"><button type="menu" class="btn btn-info" id="menuMostrar">Prestamos Pre-aprobados</button></a>
+          </div>
+        </div>
+      </div>
+        <br>
+        <section id="secIngresoUsuario" class="section" style="display: none;">
+          <section id="contenido" style="text-align: center;">
+              <h2 id="titulo">NOVEDADES</h2>
+
+              <p class="parrafo">BIENVENIDO, para ser Socio de la Cooperativa:</p>
+              <p class="parrafo">Solo necesitas llenar el Formulario</p>
+          </section>
+          <div class="formulario">
+              <div class="row">
+                  <div class="col-md-4 offset-md-4">
+                      <form id="formUsuario">
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" >
+                            <div id="nombreError"class=form-text></div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="apellido" class="form-label">Apellido</label>
+                              <input type="text" class="form-control" id="apellido" >
+                              <div id="apellidoError"class=form-text></div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="cedula" class="form-label">Cedula de Identidad</label>
+                              <input type="number" class="form-control" id="cedula" >
+                              <div id="cedulaError"class=form-text></div>
+                            </div>
+                          <div class="mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="telefono">
+                            <div id="telefonoError"class=form-text></div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Direccion de mail</label>
+                              <input type="email" class="form-control" id="email" >
+                              <div id="emailError"class=form-text></div>
+                            </div>
+                          
+                          <button type="submit" id="btnUsuario" class="btn btn-info">Quiero ser socio</button>
+                        </form>
+                  </div>
+              </div>
+            <div class="container">
+                <div id="poductos"class= "row">
+                    
+                </div>
+          </div>
+        </section>
+        
+      <section id="secIngresoPrestamo" style="display: none;" class="menu">
+        <h2 style="text-align: center;">Ingreso Prestamo</h2>
+        <div class="formulario">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form id="formPrestamo">
+                        <div class="mb-3" id="formPrestamo">
+                          <p>Esto es un Simulador de Prestamos, lo invitamos a experimentar:</p>
+                          <label for="monto" class="form-label">ingresar el monto que desea solicitar.</label>
+                          <input type="number" class="form-control" id="inputMonto" max="100000" min="10000">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cuotas" class="form-label">Cuotas de el prestamo solicitado.</label>
+                            <select name="cuotas" id="selectCuotas">
+                              <option value="6">6</option>
+                              <option value="12">12</option>
+                              <option value="24">24</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="btnPrestamo" class="btn btn-info">Ingresar Prestamo</button>
+                        <p style="text-align: center;" id="confirmPrestamo"></p>
+                      </form>
+                </div>
+          </div>
+      </section>
+
+      <section id="secListarPrestamos" style="display: none;">
+        <div style="text-align: center;" class="menu">
+          <h2>Lista de Prestamos</h2><br>
+          <select id="orden" onchange="listarPrestamos(prestamosUsuario); cambioDeOrdenyBusqueda();" onfocus="this.selectedIndex = -1;">
+            <option value="descendiente">Descendente</option>
+            <option value="ascendiente">Ascendente</option>
+            <option value="Id">Orden de Generación</option>
+          </select>
+          <input type="radio" id="todos" name="cuotas" value="0">
+          <label for="todos">todos</label>
+          <input type="radio" id="6cuotas" name="cuotas" value="6">
+          <label for="6cuotas">6 cuotas</label>
+          <input type="radio" id="12cuotas" name="cuotas" value="12">
+          <label for="12cuotas">12 cuotas</label>
+          <input type="radio" id="24cuotas" name="cuotas" value="24">
+          <label for="24cuotas">24 cuotas</label>
+          <p style="text-align: center;" id="parrafoPrestamo"></p>
+          <ul id="listaPrestamo">
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footerContainer">
+        <p>@Amparo Pereira Comision 43095 </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/fecha.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/main.js"></script> 
+   
+</body>
+</html>
+
