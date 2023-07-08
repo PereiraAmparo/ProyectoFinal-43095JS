@@ -1,158 +1,3 @@
-class Prestamo{
-    constructor(monto,cantCuotas){
-        this.monto = monto;
-        this.interesApagar = 0;
-        this.cantCuotas = cantCuotas;
-        this.amortizacion = 0;
-        this.cuota = 0;
-        this.cuotasApagar = cantCuotas;
-        this.cuotasPagadas = 0;
-        this.id = null;
-    }
-
-    getMonto(){
-        return this.monto;
-    }
-
-    setInteres(interes){
-        this.interesApagar = interes; 
-    }
-
-    getInteres(){
-        return this.interesApagar;
-    }
-
-    setAmortizacion(amortizacion){
-        this.amortizacion = amortizacion;
-    }
-
-    getAmortizacion(){
-        return this.amortizacion;
-    }
-    setCuota(cuota){
-        this.cuota = cuota;
-    }
-
-    getCuota(){
-        return this.cuota;
-    }
-    getCantCuotas(){
-        return this.cantCuotas;
-    }
-
-    getCuotasApagar(){ 
-        return this.cuotasApagar;
-    }
-
-    setCuotasPagadas(pagadas){
-        this.cuotasPagadas = pagadas;
-    }
-
-    getCuotasPagadas(){
-        return this.cuotasPagadas;
-    }
-
-    setId(id){
-        this.id = id;
-    }
-
-    getId() {
-        return this.id;
-    }
-}
-
-class Usuario{
-    constructor(nombre,apellido,ci,tel,mail){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.ci = ci;
-        this.tel = tel;
-        this.mail = mail;
-    }
-}
-
-const prestamosUsuario = [];
-
-document.getElementById("btnUsuario").addEventListener("click", ingresoUsuario);
-document.getElementById("menuSocio").addEventListener("click", showUsuario);
-document.getElementById("menuPrestamo").addEventListener("click", showPrestamo);
-document.getElementById("formPrestamo").addEventListener("submit", ingresoPrestamo);
-document.getElementById("menuMostrar").addEventListener("click", showListaPrestamo);
-document.getElementById("menuMostrar").addEventListener("click", (event) => {listarPrestamos(prestamosUsuario);});  
-document.getElementById("todos").addEventListener("click", (event) => {mostrarPorCuotas(0);});
-document.getElementById("6cuotas").addEventListener("click", (event) => {mostrarPorCuotas(6);});
-document.getElementById("12cuotas").addEventListener("click", (event) => {mostrarPorCuotas(12);});
-document.getElementById("24cuotas").addEventListener("click", (event) => {mostrarPorCuotas(24);});
-
-
-/*class Prestamo{
-    constructor(monto,cantCuotas){
-        this.monto = monto;
-        this.interesApagar = 0;
-        this.cantCuotas = cantCuotas;
-        this.amortizacion = 0;
-        this.cuotasApagar = cantCuotas;
-        this.cuotasPagadas = 0;
-        this.id = null;
-    }
-
-    getMonto(){
-        return this.monto;
-    }
-
-    setInteres(interes){
-        this.interesApagar = interes; 
-    }
-
-    getInteres(){
-        return this.interesApagar;
-    }
-
-    setAmortizacion(amortizacion){
-        this.amortizacion = amortizacion;
-    }
-
-    getAmortizacion(){
-        return this.amortizacion;
-    }
-
-    getCantCuotas(){
-        return this.cantCuotas;
-    }
-
-    getCuotasApagar(){ 
-        return this.cuotasApagar;
-    }
-
-    setCuotasPagadas(pagadas){
-        this.cuotasPagadas = pagadas;
-    }
-
-    getCuotasPagadas(){
-        return this.cuotasPagadas;
-    }
-
-    setId(id){
-        this.id = id;
-    }
-
-    getId() {
-        return this.id;
-    }
-}
-
-class Usuario{
-    constructor(nombre,apellido,ci,tel,mail){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.ci = ci;
-        this.tel = tel;
-        this.mail = mail;
-    }
-}
-
-const prestamosUsuario = [];
-
 function calculos(prestamo){
     let monto = prestamo.getMonto();
     let cantCuotas = prestamo.getCantCuotas();
@@ -162,6 +7,7 @@ function calculos(prestamo){
     let amortizacionPrestamo = (monto/cantCuotas).toFixed(2);
     prestamo.setAmortizacion(amortizacionPrestamo);
     prestamo.setInteres(interesTotal);
+    prestamo.setCuota(cuota);
     prestamo.setId((prestamosUsuario.length)+1);
 }
 
@@ -211,7 +57,11 @@ function listarPrestamos(prestamos){
         
             let interes = document.createElement("p");
             interes.classList.add("card-text");
-            interes.textContent = "Interés total a pagar: " + p.getInteres() + " pesos";
+            interes.textContent = "Interés total a pagar (IVA Incl.): " + p.getInteres() + " pesos";
+
+            let cuota = document.createElement("p");
+            cuota.classList.add("card-text");
+            cuota.textContent = "Cuota Mensual: " + p.getCuota() + " pesos";
         
             let cuotasRestantes = document.createElement("p");
             cuotasRestantes.classList.add("card-text");
@@ -222,8 +72,7 @@ function listarPrestamos(prestamos){
             cardBody.appendChild(cuotas);
             cardBody.appendChild(amortizacion);
             cardBody.appendChild(interes);
-          
-        
+            cardBody.appendChild(cuota);
             card.appendChild(cardBody);
             container.appendChild(card);
         } 
@@ -350,20 +199,3 @@ function cambioDeOrdenyBusqueda () {
     radio = document.getElementById("todos");
     radio.checked = true;
 }
-
-document.getElementById("btnUsuario").addEventListener("click", ingresoUsuario);
-document.getElementById("menuSocio").addEventListener("click", showUsuario);
-document.getElementById("menuPrestamo").addEventListener("click", showPrestamo);
-document.getElementById("formPrestamo").addEventListener("submit", ingresoPrestamo);
-document.getElementById("menuMostrar").addEventListener("click", showListaPrestamo);
-document.getElementById("menuMostrar").addEventListener("click", (event) => {listarPrestamos(prestamosUsuario);});  
-document.getElementById("todos").addEventListener("click", (event) => {mostrarPorCuotas(0);});
-document.getElementById("6cuotas").addEventListener("click", (event) => {mostrarPorCuotas(6);});
-document.getElementById("12cuotas").addEventListener("click", (event) => {mostrarPorCuotas(12);});
-document.getElementById("24cuotas").addEventListener("click", (event) => {mostrarPorCuotas(24);});*/
-
-
-
-
-
-
