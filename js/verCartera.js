@@ -2,7 +2,7 @@
 function renderProducto() {
     const producto = JSON.parse(localStorage.getItem("producto"));
         let contenido = `<div class="col-md-6 ">
-        <img src="${producto.img}" class="img-fluid" alt="${producto.nombre}">
+        <img src="${producto.img}" class="img-fluid border border-0 " alt="${producto.nombre}">
         </div>
         <div class="col-md-4 card">
             <h5 class="card-title">${producto.nombre}</h5>

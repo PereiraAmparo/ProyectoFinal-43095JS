@@ -13,7 +13,12 @@
     box-shadow: 0 4px 8px 0 rgb(108, 108, 100);
     font-family: "Michroma", sans-serif; 
     margin-bottom: 1rem;
+    background-color: none
 }
+.navbar-nav .nav-link:hover {
+    background-color:rgb(173, 241, 241);
+    color: #212529;
+  }
 .texto{
     display: flex;
     flex-direction: column;
@@ -35,7 +40,8 @@
 
 }
 
-.btn{
+.btn {
+    
     box-shadow: 0 4px 8px 0 rgb(108, 108, 100);
 }
 
